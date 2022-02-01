@@ -1,5 +1,5 @@
 //Data Reverse
-"https://www.codewars.com/kata/569d488d61b812a0f7000015/train/javascript"
+//"https://www.codewars.com/kata/569d488d61b812a0f7000015/train/javascript"
 
 function dataReverse(data) {
   let result = [];
@@ -12,7 +12,7 @@ function dataReverse(data) {
 }
 
 //Midpoint Sum
-"https://www.codewars.com/kata/54d3bb4dfc75996c1c000c6d/train/javascript"
+//"https://www.codewars.com/kata/54d3bb4dfc75996c1c000c6d/train/javascript"
 
 function midpointSum(n) {
   for (let i = 1; i < n.length - 1; i++) {
