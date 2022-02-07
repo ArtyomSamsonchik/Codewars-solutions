@@ -21,3 +21,17 @@ function midpointSum(n) {
     if (prev === past) return i;
   }
 }
+
+//Find The Parity Outlier
+//"https://www.codewars.com/kata/5526fc09a1bbd946250002dc/train/javascript"
+
+function findOutlier(integers){
+  let oddCount = [];
+  let evenCount = [];
+  
+  for (let i = 0; i < integers.length; i++) {
+    integers[i] % 2 ? oddCount.push(integers[i]) : evenCount.push(integers[i]);
+    if (evenCount.length && oddCount.length > 1) return evenCount[0];
+    if (oddCount.length && evenCount.length > 1) return oddCount[0];
+  }
+}
