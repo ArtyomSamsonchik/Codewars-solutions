@@ -35,3 +35,82 @@ function findOutlier(integers){
     if (oddCount.length && evenCount.length > 1) return oddCount[0];
   }
 }
+
+//Reducing by steps
+//"https://www.codewars.com/kata/56efab15740d301ab40002ee/train/javascript"
+
+function gcdi(x,y) {
+  let rest = x % y;
+  return rest ? gcdi(y, rest) : Math.abs(y);
+}
+
+function lcmu(a, b) {
+  a = Math.abs(a), b = Math.abs(b);
+  let min = Math.min(a, b);
+  for (let i = 2; i <= min; i++) {   
+    if (!(a % i) && !(b % i)) {
+      return  i * lcmu(a / i, b / i);
+    }
+  }
+  return Math.abs(a * b);
+}
+
+function som(a, b) {
+  return a + b;
+}
+
+function maxi(a, b) {
+  return Math.max(a,b);
+}
+
+function mini(a, b) {
+  return Math.min(a, b);
+}
+
+function operArray(fct, arr, init) {
+  let result = [];
+  
+  arr.reduce((accum, el) => {
+    accum = fct(accum, el);
+    result.push(accum);
+    return accum;
+  }, init);
+  
+  return result;
+}
+
+//"Plenty of Fish in the Pond"
+//"https://www.codewars.com/kata/5904be220881cb68be00007d/train/javascript"
+
+function fish(shoal){
+  let ptsToGrow = 4;
+  let size = 1;
+  let totalScore = 0;
+  
+  //make an array of score sums for equal weights
+  //index = weight, value = sum of weights
+  //'00111122226' = [0, 4, 8, , , 6]
+  let scores = [...shoal].reduce((accum, el) => {
+    accum[el] ? accum[el] += +el : accum[el] = +el;
+    return accum;
+  }, []);
+  
+  //index = size. Start from 1st size
+  while(true) {
+    if (scores[size]) totalScore += scores[size];    
+    totalScore -= ptsToGrow;
+    if (totalScore >= 0) {
+      ptsToGrow += 4;
+      size++;
+    } else return size;
+  }
+}
+
+//"Find the unique number"
+//"https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/javascript"
+
+function findUniq(arr) {  
+  for (let i of arr) {
+    if (arr.indexOf(i) === arr.lastIndexOf(i)) return i;      
+  }
+}
