@@ -24,3 +24,29 @@ function highAndLow(numbers){
   numbers = numbers.split(" ").map(Number);
   return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
 }
+
+//"Vowel Count"
+//"https://www.codewars.com/kata/54ff3102c1bad923760001f3/train/javascript"
+
+function getCount(str) {
+  let vowelsCount = 0;
+  let vowels = ["a", "e", "i", "o", "u"];
+  str.split("").forEach(el => {
+    if (vowels.includes(el)) vowelsCount++;
+  });
+  return vowelsCount;
+}
+
+//"Mumbling"
+//"https://www.codewars.com/kata/5667e8f4e3f572a8f2000039/train/javascript"
+
+function accum(s) {
+	return s
+    .toLowerCase()
+    .split("")
+    .reduce((accum, el, i) => {
+      accum.push(el.toUpperCase() + el.repeat(i));
+      return accum;
+    }, [])
+    .join("-");
+}
