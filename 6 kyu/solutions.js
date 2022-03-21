@@ -138,3 +138,21 @@ function likes(names) {
           ` and ${names.length - 2} others like this`;        
   }
 }
+
+//"Repeated Substring"
+//"https://www.codewars.com/kata/5491689aff74b9b292000334/train/javascript"
+
+function f(s) {
+  let substr = "";
+  
+  for (let i = 0; i < s.length; i++) {
+    substr += s[i];
+    let copy = s.split(substr);
+    
+    if (copy.every(el => el === "")) {
+      return [substr, copy.length - 1];
+    }
+  }
+  
+  return [s, 1];
+}
