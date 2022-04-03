@@ -156,3 +156,34 @@ function f(s) {
   
   return [s, 1];
 }
+
+//"Area of largest rectangle in grid"
+//"https://www.codewars.com/kata/5e74588a25ba6800325e9233/train/javascript"
+
+function largestRectangleInGrid(matrix) {
+  let resultArr = [];
+  let resultRow = new Array(matrix[0].length).fill(null);
+  
+//    Merging the following lines. Number 1 is added to prev value.
+//    0 overwrites prev value. Num in result string = continuous column height.
+  for (let i = 0; i < matrix.length; i++) {    
+    resultRow = matrix[i].map((el, i) => el === 0 ? 0 : el + resultRow[i]);
+    
+//     Checking each substring in the result string with no 0 inside.
+//     Finding ALL rectangles in each substring by moving start pos = j
+//     and finding the highest rectangle height in the string.
+    for (let j = 0; j < resultRow.length; j++) {
+      if (resultRow[j] === 0) {
+        continue;        
+      }
+//        j = rowStart, k = rowEnd
+      for (let k = j; k < resultRow.length && resultRow[k] !== 0; k++) {
+        let rectHeight = Math.min(...resultRow.filter((el, i) => {
+          return i >= j && i <= k;
+        }));       
+        resultArr.push((k - j + 1) * rectHeight);
+      }
+  	}  	
+	}
+  return Math.max(...resultArr);
+}
