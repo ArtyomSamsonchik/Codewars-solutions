@@ -57,3 +57,17 @@ function accum(s) {
 function filterLongWords(sentence, n) {
   return sentence.split(" ").filter(el => el.length > n);
 }
+
+//"Barista problem"
+//"https://www.codewars.com/kata/6167e70fc9bd9b00565ffa4e/train/javascript"
+
+function barista(coffees){
+  if (!coffees.length) return 0;
+  
+  let wait = -2;
+  return coffees
+    .slice()
+    .sort((a, b) => a - b)
+    .map(el =>  wait += el + 2)
+    .reduce((accum, el) => accum + el);  
+}
