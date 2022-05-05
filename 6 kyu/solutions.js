@@ -187,3 +187,51 @@ function largestRectangleInGrid(matrix) {
 	}
   return Math.max(...resultArr);
 }
+
+//"From..To..Series #1: from m to n. Find the maximum range"
+//"https://www.codewars.com/kata/58065440a4647e0ed3000230/train/javascript"
+
+function findMaxRange(ranges){
+  let result = [];
+  let maxRange = 0;
+  
+  ranges.forEach(range => {
+    let [first, second] = range.split(" ").filter(el => !isNaN(+el));
+    let newDiff = Math.abs(first - second);
+    
+    if (newDiff > maxRange) {
+      result = [range];
+      maxRange = newDiff;
+      
+    } else if (newDiff === maxRange) {
+      result.push(range);
+    }
+  });
+  
+  return result;
+}
+
+//"Simple Fun #217: Sort By Guide"
+//"https://www.codewars.com/kata/590148d79097384be600001e/train/javascript"
+
+function sortByGuide(arr, guide) {
+  let unsorted = [];
+  let sorted = [];
+  
+  for (let i = 0; i < guide.length; i++) {
+    if (guide[i] === -1) {
+      unsorted.push( [arr[i], i] );  
+      
+    } else {
+      sorted.push( [arr[i], guide[i]] );
+    }
+  }
+  
+  sorted = sorted
+    .sort( ([, guideA], [, guideB]) => guideA - guideB )
+    .map(([el]) => el);
+  
+  unsorted.forEach(([num, index]) => sorted.splice(index, 0, num));
+  
+  return sorted;
+}
