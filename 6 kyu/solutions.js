@@ -235,3 +235,16 @@ function sortByGuide(arr, guide) {
   
   return sorted;
 }
+
+//"Sums of Parts"
+//"https://www.codewars.com/kata/5ce399e0047a45001c853c2b/solutions/javascript/me/best_practice"
+
+function partsSums(ls) {
+  let result = [];
+  let sum = ls.reduce((accum, el) => accum + el, 0);
+  
+  result.push(sum);
+  ls.forEach(el => result.push(sum -= el))
+  
+  return result;
+}
