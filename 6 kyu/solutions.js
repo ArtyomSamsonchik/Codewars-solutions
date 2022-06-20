@@ -248,3 +248,12 @@ function partsSums(ls) {
   
   return result;
 }
+
+//"Find the missing term in an Arithmetic Progression"
+//"https://www.codewars.com/kata/52de553ebb55d1fca3000371/train/javascript"
+
+let findMissing = function (list) {  
+  let totalSum = (list[0] + list[list.length - 1]) / 2 * (list.length + 1);
+  let sumOfGiven = list.reduce((accum, el) => accum + el);
+  return totalSum - sumOfGiven;
+}
