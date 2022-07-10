@@ -257,3 +257,34 @@ let findMissing = function (list) {
   let sumOfGiven = list.reduce((accum, el) => accum + el);
   return totalSum - sumOfGiven;
 }
+
+//"Calculate Pyramid Height"
+//"https://www.codewars.com/kata/56968ce7753513604b000055"
+
+function pyramidHeight(n) {
+  let edge = 1;
+  let layersCount = 0;
+  
+  while (true) {
+    n -= edge ** 2;
+    if (n < 0) break;
+    edge++;
+    layersCount++;
+  }
+  
+  return layersCount;
+}
+
+//"Body mass index calculation"
+//"https://www.codewars.com/kata/55f810474dc34c5a25000016"
+
+//DATA array was declared in kata page
+function calculateBmi(weight, height) {
+  let bmi = weight / (height * height / 10000);
+  let [, , category] = DATA.find(([from, to]) => bmi >= from && bmi < to);
+
+  return {
+    value: bmi.toFixed(1),
+    category
+  };
+}
